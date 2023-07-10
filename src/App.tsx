@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import TaskForm from './components/TaskForm'
 
 interface Task {
   id : number;
@@ -9,10 +10,10 @@ interface Task {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Array<Task>>([])
+  const [tasks, setTasks] = useState<Task[]>([])
   return (
     <>
-      
+      <TaskForm />
     </>
   )
 }
