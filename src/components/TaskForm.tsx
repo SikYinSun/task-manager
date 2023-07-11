@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import categories from "../categories";
 
 const taskSchema = z.object({
@@ -16,8 +16,8 @@ interface TaskProps {
   onSumbit : (data : TaskFormData) => void;
 }
 
-const TaskForm = ({onSumbit}) => {
-  const {register, handleSubmit, reset, formState:{errors, isValid}} = useForm<TaskFormData>({
+const TaskForm = ({onSumbit} : TaskProps) => {
+  const {register, handleSubmit, reset, formState:{errors}} = useForm<TaskFormData>({
     resolver: zodResolver(taskSchema),
   });
 
