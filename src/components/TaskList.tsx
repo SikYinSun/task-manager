@@ -12,22 +12,22 @@ const TaskList = ({tasks, onDelete} : TaskListProps) => {
   };
 
   return (
-    <div className="w-96">
-      <table className="min-w-full text-center text-sm font-light">
-        <thead>
+    <div className="relative overflow-x-auto shadow-md pt-5 sm:rounded-lg">
+      <table className="w-full text-sm text-center text-black-100 dark:text-blue-100">
+        <thead className="text-xs text-black uppercase bg-slate-300 dark:text-white">
           <tr>
-            <th>Title</th>
-            <th>Due Date</th>
-            <th>Category</th>
-            <th>Delete</th>
+            <th className="px-3 py-1">Title</th>
+            <th className="px-3 py-1">Due Date</th>
+            <th className="px-3 py-1">Category</th>
+            <th className="px-3 py-1">Delete</th>
           </tr>
         </thead>
         <tbody>
           {tasks.map((task) => (
-            <tr key={task.id}>
-              <td>{task.title}</td>
-              <td>{task.dueDate.toLocaleDateString()}</td>
-              <td>{task.category}</td>
+            <tr key={task.id} className="bg-slate-500 border-b border-blue-400">
+              <td className="px-6 py-3 text-gray-200">{task.title}</td>
+              <td className="px-6 py-3 text-gray-200">{task.dueDate.toLocaleDateString()}</td>
+              <td className="px-6 py-3 text-gray-200">{task.category}</td>
               <td>
                 <button onClick={() => onDelete(task.id)} 
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">

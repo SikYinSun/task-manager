@@ -11,18 +11,29 @@ interface Task {
 }
 
 function App() {
-  // const [tasks, setTasks] = useState<Task[]>([])
-  const [tasks, setTasks] = useState<Task[]>([{
-      id: 1,
-      title: "abc",
-      dueDate: new Date("2023-07-09"),
-      category: "Work",
-  }]);
+  const [tasks, setTasks] = useState<Task[]>([])
+
+  const handleAddtask = (task : Omit<Task ,"id">) => {
+    const newTask : Task = {
+      id: tasks.length +1,
+      title: task.title,
+      dueDate: new Date(task.dueDate),
+      category: task.category,
+    };
+
+    newTask.dueDate.setHours(24);
+    setTasks([...tasks, newTask]);
+  }
+
+  const handleDeleteTask = (id: number) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+  }
 
   return (
     <>
-      <TaskForm />
-      <TaskList tasks={tasks}/>
+      <TaskForm onSumbit={handleAddtask}/>
+      <TaskList tasks={tasks} onDelete={handleDeleteTask}/>
     </>
   )
 }
