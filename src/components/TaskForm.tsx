@@ -27,47 +27,51 @@ const TaskForm = ({onSumbit}) => {
   }
 
   return (
-      <form className="bg-white shadow-md rounded px-20 pt-6 pb-8 mb-4" onSubmit={handleSubmit(handleFormSubmit)}>
-        <div className="flex flex-col mb-4">
-          <label htmlFor="title">Title</label>
-          <input 
-            {...register("title")}
-            type="text"
-            id="title"
-            placeholder="Title"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-          {errors.title && <p>{errors.title.message}</p>}
-        </div>
+    <div className="w-screen">
+      <div className="flex justify-center">
+        <form className="bg-white shadow-md rounded px-20 pt-6 pb-8 mb-4" onSubmit={handleSubmit(handleFormSubmit)}>
+          <div className="flex flex-col mb-4">
+            <label htmlFor="title">Title</label>
+            <input 
+              {...register("title")}
+              type="text"
+              id="title"
+              placeholder="Title"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            {errors.title && <p>{errors.title.message}</p>}
+          </div>
 
-        <div className="flex flex-col mb-4">
-          <label htmlFor="dueDate">Due Date</label>
-          <input 
-            {...register("dueDate")}
-            type="date"
-            id="dueDate"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-          {errors.dueDate && <p>{errors.dueDate.message}</p>}
-        </div>
+          <div className="flex flex-col mb-4">
+            <label htmlFor="dueDate">Due Date</label>
+            <input 
+              {...register("dueDate")}
+              type="date"
+              id="dueDate"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            {errors.dueDate && <p>{errors.dueDate.message}</p>}
+          </div>
 
-        <div className="flex flex-col mb-4">
-          <label htmlFor="category">Category</label>
-          <select {...register("category")}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option value=""></option>
-            {categories.map((category) => (
-              <option value={category}> {category}</option>
-            ))}
-          </select>
-          {errors.category && <p>{errors.category.message}</p>}
-        </div>
+          <div className="flex flex-col mb-4">
+            <label htmlFor="category">Category</label>
+            <select {...register("category")}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value=""></option>
+              {categories.map((category) => (
+                <option value={category}> {category}</option>
+                ))}
+            </select>
+            {errors.category && <p>{errors.category.message}</p>}
+          </div>
 
-        {/* <button disabled={!isValid} className="btn" type="submit"> */}
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">
-          Submit
-        </button>
-      </form>
+          {/* <button disabled={!isValid} className="btn" type="submit"> */}
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 
