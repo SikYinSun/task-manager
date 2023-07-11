@@ -13,16 +13,16 @@ const taskSchema = z.object({
 type TaskFormData = z.infer<typeof taskSchema>;
 
 interface TaskProps {
-  onSumbit : (data : TaskFormData) => void;
+  onSubmit : (data : TaskFormData) => void;
 }
 
-const TaskForm = ({onSumbit} : TaskProps) => {
+const TaskForm = ({onSubmit} : TaskProps) => {
   const {register, handleSubmit, reset, formState:{errors}} = useForm<TaskFormData>({
     resolver: zodResolver(taskSchema),
   });
 
   const handleFormSubmit = (data : TaskFormData) => {
-    onSumbit(data);
+    onSubmit(data);
     reset();
   }
 

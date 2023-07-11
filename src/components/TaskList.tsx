@@ -1,4 +1,4 @@
-import {Task} from "../Task";
+import { Task } from "../Task";
 
 interface TaskListProps {
   tasks : Task[],
@@ -26,7 +26,8 @@ const TaskList = ({tasks, onDelete} : TaskListProps) => {
           {tasks.map((task) => (
             <tr key={task.id} className="bg-slate-500 border-b border-blue-400">
               <td className="px-6 py-3 text-gray-200">{task.title}</td>
-              <td className="px-6 py-3 text-gray-200">{task.dueDate.toLocaleDateString()}</td>
+              {/* <td className="px-6 py-3 text-gray-200">{task.dueDate.toLocaleDateString()}</td> */}
+              <td className="px-6 py-3 text-gray-200">{new Date(task.dueDate).toISOString().slice(0, 10) }</td>
               <td className="px-6 py-3 text-gray-200">{task.category}</td>
               <td>
                 <button onClick={() => onDelete(task.id)} 

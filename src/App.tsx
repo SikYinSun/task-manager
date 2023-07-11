@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
@@ -11,7 +11,17 @@ interface Task {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([])
+
+  const storedTasks = localStorage.getItem('tasks');
+
+  const initialTasks = storedTasks ? JSON.parse(storedTasks) : [];
+  console.log(initialTasks)
+
+  const [tasks, setTasks] = useState<Task[]>(initialTasks)
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleAddtask = (task : Omit<Task ,"id">) => {
     const newTask : Task = {
@@ -21,7 +31,7 @@ function App() {
       category: task.category,
     };
 
-    newTask.dueDate.setHours(24);
+    newTask.dueDate.setHours(0, 0, 0, 0);
     setTasks([...tasks, newTask]);
   }
 
@@ -32,7 +42,7 @@ function App() {
 
   return (
     <>
-      <TaskForm onSumbit={handleAddtask}/>
+      <TaskForm onSubmit={handleAddtask}/>
       <TaskList tasks={tasks} onDelete={handleDeleteTask}/>
     </>
   )
