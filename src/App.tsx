@@ -15,7 +15,7 @@ function App() {
   const storedTasks = localStorage.getItem('tasks');
 
   const initialTasks = storedTasks ? JSON.parse(storedTasks) : [];
-  console.log(initialTasks)
+  // console.log(initialTasks)
 
   const [tasks, setTasks] = useState<Task[]>(initialTasks)
 
