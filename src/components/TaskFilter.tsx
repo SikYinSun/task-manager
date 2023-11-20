@@ -1,11 +1,11 @@
-import categories from "../categories"
+// import categories from "../categories"
 
-interface TaskFilterProps {
-  onSelectCategory : (category : string) => void;
-}
+// interface TaskFilterProps {
+//   onSelectCategory : (category : string) => void;
+// }
 
-const TaskFilter = ({onSelectCategory} : TaskFilterProps) => {
+// const TaskFilter = ({onSelectCategory} : TaskFilterProps) => {
   
-};
+// };
 
-export default TaskFilter;
+// export default TaskFilter;
